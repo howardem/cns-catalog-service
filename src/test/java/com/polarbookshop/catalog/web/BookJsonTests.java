@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.json.JacksonTester;
+import org.springframework.boot.test.json.JsonContent;
 
 import com.polarbookshop.catalog.domain.Book;
 
@@ -17,8 +18,8 @@ class BookJsonTests {
 
 	@Test
 	void testSerialize() throws Exception {
-		var book = new Book("1234567890", "Title", "Author", 9.90);
-		var jsonContent = json.write(book);
+		Book book = new Book("1234567890", "Title", "Author", 9.90);
+		JsonContent<Book> jsonContent = json.write(book);
 
 		assertThat(jsonContent).extractingJsonPathStringValue("@.isbn")
 			.isEqualTo(book.isbn());
@@ -32,7 +33,7 @@ class BookJsonTests {
 
 	@Test
 	void testDeserialize() throws Exception {
-		var content = """
+		String content = """
 			{
 				"isbn": "1234567890",
 				"title": "Title",
