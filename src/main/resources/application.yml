@@ -1,8 +1,10 @@
 spring:
   application:
     name: catalog-service
+
   config:
     import: "optional:configserver:"
+
   cloud:
     config:
       uri: http://localhost:8888
@@ -14,6 +16,18 @@ spring:
         initial-interval: 1000
         max-interval: 2000
         multiplier: 1.1
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/polar_catalog
+    username: postgres
+    password: pgpassw
+    hikari:
+      connection-timeout: 2000
+      maximum-pool-size: 5
+
+  sql:
+    init:
+      mode: always
 
 management:
   endpoints:
