@@ -56,6 +56,11 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+/*
+tasks.named("bootBuildImage") {
+	environment["BP_DATADOG_ENABLED"] = "true" 
+} */
+
 bootRun {
 	systemProperty 'spring.profiles.active', 'testdata'
 }
