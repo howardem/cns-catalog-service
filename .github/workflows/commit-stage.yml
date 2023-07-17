@@ -79,4 +79,6 @@ jobs:
         with: 
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish container image'
+        uses: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
