@@ -60,11 +60,12 @@ tasks.named('test') {
 
 tasks.named("bootBuildImage") {
 	buildpacks = ["paketobuildpacks/adoptium:latest", "urn:cnb:builder:paketo-buildpacks/java"]
+	environment['BP_LIVE_RELOAD_ENABLED'] = true
 }
 
 bootBuildImage {
 	imageName = "${project.name}"
-	environment = ["BP_JVM_VERSION" : "17.*"]
+	environment = ["BP_JVM_VERSION" : "17.*", "BP_LIVE_RELOAD_ENABLED" : "true"]
 
 	docker {
 		publishRegistry {
