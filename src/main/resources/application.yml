@@ -18,9 +18,9 @@ spring:
         multiplier: 1.1
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/polar_catalog
-    username: postgres
-    password: pgpasswd
+    url: jdbc:postgresql://localhost:5432/polardb_catalog
+    username: user
+    password: password
     hikari:
       connection-timeout: 2000
       maximum-pool-size: 5
